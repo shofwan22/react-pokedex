@@ -1,0 +1,35 @@
+div.body-container {
+    margin-top: 100px;
+}
+
+.card-list {
+    margin-bottom: 20px;
+}
+
+.card-list .card:hover{
+    cursor: pointer;
+}
+
+.img-pokemon{
+    width: 140px;
+    height: 140px;
+}
+
+h5.card-title{
+    margin-bottom: 0;
+    text-transform: capitalize;
+}
+
+.detail-title {
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.body-content {
+    text-transform: capitalize;
+}
+
+.stats {
+    margin-top: 20px;
+}
