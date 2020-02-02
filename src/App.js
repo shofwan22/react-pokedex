@@ -12,7 +12,6 @@ class App extends Component {
         <Fragment>
           <div className="container">
             <Navbar />
-            {/* <List /> */}
           </div>
           <Route path="/" exact component={List} />
           <Route path="/detail-pokemon/:id" component={DetailList} />
