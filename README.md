@@ -7,7 +7,7 @@ Then after cloning, move into your project folder, and carry out the following c
 ### `npm install`
 
 After the previous process is complete, it's time to run the application with the following command: 
-### `npm install`
+### `npm start`
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
