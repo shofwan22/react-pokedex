@@ -12,6 +12,10 @@ class DetailList extends Component {
         stats: [],
     }
 
+    addDefaultImage = (e) => {
+        e.target.src = 'https://via.placeholder.com/140/FFFFFF/000000/?text=No Image'
+    }
+
     componentDidMount(){
         let id = this.props.match.params.id;
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res => {
@@ -23,15 +27,13 @@ class DetailList extends Component {
                 types: res.data.types,
                 stats: res.data.stats
             })
-            console.log(res.data)
-            console.log(this.state.stats)
         })
     }
 
     render() {
         return(
             <Fragment>
-                <div className="container body-container">
+                <div className="container detail-container">
                     <div className="row">
                         <div className="col-md-12">
                             <div className="card border-info">
@@ -41,7 +43,7 @@ class DetailList extends Component {
                                 <div className="card-body">                                    
                                     <div className="row">
                                         <div className="col-md-6 bg-light text-center">                                            
-                                            <img className="card-img-top img-pokemon" alt="" src={this.state.images} />
+                                            <img className="card-img-top img-pokemon" alt="" src={this.state.images} onError={this.addDefaultImage}/>
                                         </div>
                                         <div className="col-md-6">                                            
                                             <div className="list-group">
@@ -84,8 +86,8 @@ class DetailList extends Component {
                                                         this.state.stats.map((s, i) => {
                                                             var progress = `${s.base_stat}%`;                                                            
                                                             return (
-                                                            <Fragment>
-                                                            <p key={i} className="mb-1 body-content">{s.stat['name']}</p>
+                                                            <Fragment key={i}>
+                                                            <p className="mb-1 body-content">{s.stat['name']}</p>
                                                             <div className="progress">
                                                                 <div className="progress-bar" role="progressbar" style={{ width: progress }}>{s.base_stat}</div>
                                                             </div>

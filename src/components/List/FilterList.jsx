@@ -4,7 +4,8 @@ import axios from 'axios';
 class FilterList extends Component {
     state = {
         type: [],
-        typeChange: ''
+        typeChange: '',
+        name_pokemon: ''
     }
     getTypePokemon = () => {
         axios.get('https://pokeapi.co/api/v2/type')
@@ -27,6 +28,17 @@ class FilterList extends Component {
         })
     }
 
+    handleChangeSearch = (e) => {
+        this.setState({
+            name_pokemon: e.target.value
+        })
+    }
+
+    handleSearch = (e) => {
+        e.preventDefault();
+        this.props.onSearchChange(this.state.name_pokemon)       
+    }
+
     componentDidMount() {
         this.getTypePokemon()
     }
@@ -38,8 +50,10 @@ class FilterList extends Component {
                     <div className="row">
                         <div className="col-md-6">
                             <div className="form-group has-search">
-                                <span className="fa fa-search form-control-feedback"></span>
-                                <input type="text" className="form-control" placeholder="Search Pokemon . . ." />
+                                <form onSubmit={this.handleSearch}>
+                                    <span className="fa fa-search form-control-feedback"></span>
+                                    <input name="name_pokemon" type="text" className="form-control" placeholder="Search Pokemon . . ." onChange={this.handleChangeSearch}/>
+                                </form>
                             </div>
                         </div>
                         <div className="col-md-6">
